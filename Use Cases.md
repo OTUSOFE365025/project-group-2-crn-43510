@@ -1,4 +1,4 @@
-## 1. Use Case Models
+## Use Case Models
 
 The AIDAP system is designed to help students, lecturers, and administrators interact with university data through a single AI-powered assistant. Below is a summary of the main use cases for each actor.
 

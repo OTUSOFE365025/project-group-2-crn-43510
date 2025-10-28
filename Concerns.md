@@ -1,4 +1,4 @@
-## 4. Architectural Concerns
+## Architectural Concerns
 
 - **AI model management:** Different models or versions may affect accuracy and latency, so version control and configuration are key.  
 - **Integration stability:** External systems like LMS or calendars may go down, requiring retry and recovery mechanisms.  

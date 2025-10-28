@@ -1,4 +1,4 @@
-## 3. System Constraints
+## System Constraints
 
 1. The system will be deployed as a cloud-native service to support scaling and uptime.  
 2. Integrations must rely on standard REST or GraphQL APIs for interoperability.  

@@ -1,4 +1,4 @@
-## 2. Quality Attributes
+## Quality Attributes
 
 The main quality goals drive the architecture decisions. Each one maps to user needs or explicit requirements.
 
