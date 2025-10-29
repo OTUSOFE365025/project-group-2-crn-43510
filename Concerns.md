@@ -1,7 +1,7 @@
 ## Architectural Concerns
 
-| ID | Concern |
-|----|---------|
+| ID   | Concern |
+|----  |---------|
 |CRN-1|**AI model management:** Different models or versions may affect accuracy and latency, so version control and configuration are key|
 |CRN-2|**Integration stability:** External systems like LMS or calendars may go down, requiring retry and recovery mechanisms|
 |CRN-3|**Role-based access:** Students, lecturers, and administrators have different permissions, so RBAC must be enforced|
