@@ -25,7 +25,8 @@ The AIDAP system is designed to help students, lecturers, and administrators int
 **System Maintainer**
 - Deploy and update the platform with minimal downtime  
 - Configure and test AI models and API keys  
-- Monitor the health and performance of the system  
+- Monitor the health and performance of the system
+- The system shall allow secure backup and restore of user and configuration data
 
 **External Data Systems**
 - Provide academic and administrative data (LMS, registration, calendar, mail)
