@@ -9,4 +9,5 @@
 |CRN-5|**Data privacy:** Conversations and user data should be securely stored and anonymized when possible| 
 |CRN-6|**Scalability:** Large scalability causes monetary and operational expenses especially during peak academic season|
 |CRN-7|**Monitoring and observability:** Logging latency, accuracy, and usage metrics is essential for maintainers|
-
+|CRN-8|**Error recovery and fault tolerance:** The system must handle runtime failures (e.g., API timeouts, service crashes) without losing critical user data or context.|
+|CRN-9|**Energy and resource efficiency:** The AI workloads and background services should optimize resource usage to reduce cloud costs and environmental footprint.|
