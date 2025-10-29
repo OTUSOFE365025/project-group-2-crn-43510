@@ -16,10 +16,11 @@ The main quality goals drive the architecture decisions. Each one maps to user n
 ---
 
 |ID|Quality Attribute|Scenario|Associated Use Case|
-|QA-1|Performance|The System responds to Student queries within 2 seconds on avergae under normal load.|UC-1|
-|QA-2|Security|Only system authorized Lecturers can send annoucements to their respective courses.|UC-2|
-|QA-3|Usability|The System's user interface and conversational design present student-related analytics in a clear, intuitive, and organized format allowing Lecturers to easily request and interpret data.|UC-3|
-|QA-4|Maintainability|The System allows Administators and System Maintainers to deploy updates and monitoring tools continuously without disrupting user interaction|UC-5|
-|QA-5|Availability|The System maintains a minimum of 99.5% available uptime duirng the academic year to ensure dependable service access.|UC-6|
+|--|-----------------|--------|-------------------|
+|**QA-1**|**Performance**|The System responds to Student queries within 2 seconds on avergae under normal load.|UC-1|
+|**QA-2**|**Security**|Only system authorized Lecturers can send annoucements to their respective courses.|UC-2|
+|**QA-3**|**Usability**|The System's user interface and conversational design present student-related analytics in a clear, intuitive, and organized format allowing Lecturers to easily request and interpret data.|UC-3|
+|**QA-4**|**Maintainability**|The System allows Administators and System Maintainers to deploy updates and monitoring tools continuously without disrupting user interaction|UC-5|
+|**QA-5**|**Availability**|The System maintains a minimum of 99.5% available uptime duirng the academic year to ensure dependable service access.|UC-6|
 
 ---
