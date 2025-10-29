@@ -40,3 +40,9 @@ The AIDAP system is designed to help students, lecturers, and administrators int
 |UC-4: Administrator Broadcasts Campus-Wide Announcement|The Administrator broadcasts an announcement, the system verifies Administrator access, sends the message to the Students and Lecturers, then confirms message delivery.|RA3, RA5, R3, R4, R8, RS2|
 |UC-5: Lecturer Informs Students of Low Engaement|The System detects low student engagemnet and notifies the Lecturer, the Lectuerer responds by sending a message to their students addressing the issue and encouraging participation, then the Students recieve the message through the System.| RL7, RS2, R6|
 |UC-6: Administrator Recovers Data for Users|The Administrator initiates a system recovery after a system failure, restoring data and access for the Lecturers and Students, ensuring continued support and interaction without disruption.|RA6, RM6, R7, RA5|
+
+---
+
+**Use Case Model**
+<img width="918" height="970" alt="image" src="https://github.com/user-attachments/assets/fc673563-c13f-4ebe-850b-5774ee4f53e0" />
+
