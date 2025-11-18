@@ -1,7 +1,7 @@
 Include in this file the 7 steps for Iteration 1
-##STEP 1 [Review Inputs]##
+##STEP 1 [Review Inputs]
 
-##1.1 Primary Functional Drivers [Use Cases]##
+##1.1 Primary Functional Drivers [Use Cases]
 |Use Case|Description|Associated Requirement ID|
 |--------|-----------|-------------------------|
 |UC-1:Student Query & System Answer|The Student Asks the system a question, the system interprets the query, then generates a response using both stored knowledge and live data.|RS1, R5, R6|
