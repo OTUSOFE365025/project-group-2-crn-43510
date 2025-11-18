@@ -43,3 +43,45 @@ Include in this file the 7 steps for Iteration 1
 - Fault tolerance and error recovery during service failures
 - Scalability to maintain performance under peak load
 - Efficient use of resources to manage cloud costs
+
+## STEP 2 [Establish Iteration Goal]
+
+THe goal of Iteration 1 is to establish a high level architecture for AIDAP and define the system structure at a broad level. This iteration focuses on main functions that will impact how the platform operates and behaves. 
+
+Specifically this Iteration will focus on:
+- Identifying a suitable reference architecture for AIDAP
+
+- Breaking the system into major layers and components
+
+- Addressing core use cases (UC-1, UC-2, UC-3, UC-4, UC-6)
+
+- Considering key quality attributes like performance, availability, security, usability, and maintainability
+
+- Producing the initial logical architecture and deployment views
+
+- Assigning responsibilities to each high-level component
+
+By the end of this iteration, the system should have a clear architectural foundation. This will be refined in Iteration 2 when domain-specific components and detailed interactions are introduced.
+
+## STEP 3 [Choose Elements of the System to Decompose]
+
+In Iteration 1, the AIDAP system is decomposed at a high level to establish the architectural areas for the primary use cases and quality attributes identified in Step 1. the goal is to break the system into its core layers and subsystems.
+
+The system is decomposed into the following parts:
+
+- Presentation Layer: Web interface, mobile app, and voice/assistant interface used by students, lecturers, and administrators.
+
+- API Gateway / Entry Point: Central access point handling SSO authentication, request routing, and security enforcement.
+
+- Core Application Services Layer: High-level backend services such as conversational/query processing, AI model interaction, context handling, announcements, analytics, and engagement monitoring.
+
+- Integration Layer: Components that connect AIDAP to external systems including LMS, Registration, Calendar, and Email services through REST/GraphQL APIs.
+
+- Data Management Layer: Storage components for conversation history, user profiles and preferences, analytics data, logs, and system metrics.
+
+- External Systems: University SSO provider, LMS, registration system, academic calendar system, email server, and notification services.
+
+## STEP 4 [Choose Design Concepts That Satisfy the Selected Drivers]
+## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces]
+## STEP 6 [Sketch Views and Record Design Decisions]
+## STEP 7 [Perform Analysis of the Current Design and Review Iteration Goal]
