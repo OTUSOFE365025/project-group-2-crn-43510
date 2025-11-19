@@ -82,6 +82,86 @@ The system is decomposed into the following parts:
 - External Systems: University SSO provider, LMS, registration system, academic calendar system, email server, and notification services.
 
 ## STEP 4 [Choose Design Concepts That Satisfy the Selected Drivers]
+
+The purpose of this step is to select design concepts that will guide how the high-level components identified in Step 3 should be structured. These concepts need to support the main use cases (UC-1 to UC-6), system constraints, and the quality attributes prioritized in Step 1.
+
+# Presentation Layer
+
+Design Concepts:
+
+Thin client interfaces for web and mobile.
+
+Clear separation between UI and backend logic.
+
+Optional support for voice-enabled devices as required by system constraints.
+
+Reason:
+This supports multi-platform access, usability, and keeps complex logic on the server side for better performance and maintainability.
+
+# API Gateway / Entry Point
+
+Design Concepts:
+
+API Gateway pattern as a single controlled entry point.
+
+Centralized authentication through the university’s SSO provider.
+
+Routing, access control, and basic request validation.
+
+Reason:
+This aligns with the SSO requirement, improves security, and simplifies how different clients communicate with backend services.
+
+# Core Application Services
+
+Design Concepts:
+
+Service-oriented structure with separate modules (query processing, AI model service, announcements, analytics, engagement monitoring).
+
+Stateless service design to enable horizontal scaling.
+
+Support for asynchronous operations when necessary (e.g., analytics).
+
+Reason:
+This helps with performance, availability, and maintainability, and it maps directly to the main system use cases.
+
+# Integration Layer
+
+Design Concepts:
+
+Adapter pattern for LMS, Registration, Calendar, and Email systems.
+
+Single integration facade that backend services interact with.
+
+Retry and timeout logic for external service faults.
+
+Reason:
+This ensures compatibility with required REST/GraphQL data sources and increases reliability when external systems fail or lag.
+
+# Data Management Layer
+
+Design Concepts:
+
+Repository/Data Access patterns for conversation history, user profiles, analytics, and logs.
+
+Logical separation of operational data, analytics data, and system metrics.
+
+Caching for frequently accessed academic and schedule information.
+
+Reason:
+This supports persistence requirements, improves performance, and keeps data concerns cleanly separated.
+
+# External Systems (Boundary)
+
+Design Concepts:
+
+Clearly modeled as external dependencies in the architecture.
+
+Use of standard protocols like REST/GraphQL and SSO standards.
+
+Loose coupling via adapters rather than direct internal integration.
+
+Reason:
+This defines system boundaries, reduces coupling, and makes the architecture more adaptable to changes in external university systems.
 ## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces]
 ## STEP 6 [Sketch Views and Record Design Decisions]
 ## STEP 7 [Perform Analysis of the Current Design and Review Iteration Goal]
