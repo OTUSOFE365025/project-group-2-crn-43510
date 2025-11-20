@@ -2,11 +2,11 @@ Include in this file the 7 steps for Iteration 2
 
 
 
-# STEP 1 [Review Inputs]
+## STEP 1 [Review Inputs]
 
-#### Iteration 2 focuses on making more detailed architectural decisions that drive implementation, moving from generic to specific. In Iteration 2 we will build upon the results of Iteration 1. In Iteration 1, the overall architecture structure was established and the primary drivers were identified (use cases, quality attributes, concerns, and constraints). Throughout the second iteration, the results of the first iteration will be further refined and modeled to support implementation. 
+##### Iteration 2 focuses on making more detailed architectural decisions that drive implementation, moving from generic to specific. In Iteration 2 we will build upon the results of Iteration 1. In Iteration 1, the overall architecture structure was established and the primary drivers were identified (use cases, quality attributes, concerns, and constraints). Throughout the second iteration, the results of the first iteration will be further refined and modeled to support implementation. 
 
-## 1.1 Primary Functional Drivers [Use Cases]
+### 1.1 Primary Functional Drivers [Use Cases]
 
 |Use Case|Description|Associated Requirement ID|
 |--------|-----------|-------------------------|
@@ -19,7 +19,7 @@ Include in this file the 7 steps for Iteration 2
 
 ---
 
-## 1.2 Quality Attributes
+### 1.2 Quality Attributes
 
 |ID|Quality Attribute|Scenario|Associated Use Case|
 |--|-----------------|--------|-------------------|
@@ -31,7 +31,7 @@ Include in this file the 7 steps for Iteration 2
 
 ---
 
-## 1.3 Concerns
+### 1.3 Concerns
 
 | ID   | Concern |
 |----  |---------|
@@ -47,7 +47,7 @@ Include in this file the 7 steps for Iteration 2
 
 ---
 
-## 1.4 Constraints
+### 1.4 Constraints
 
 | ID | Constraint |
 |----|------------|
@@ -64,8 +64,22 @@ Include in this file the 7 steps for Iteration 2
 
  ---
 
-The primary use cases that will be emphasized in this iteration are: 
-- UC-1: Student Query & System Answer
-- UC-2: Lecturer Announcement to Students
-- UC-3: Lecture
+ ## STEP 2 [Establish Iteration Goal by Selecting Drivers]
+
+ ##### Goal: 
+ ###### The goal of this iteration is to identify concrete structures that support the AIDAP's primary functionality and act as units of implementation for development teams. This moves the architecture from a more generalized structure to distinct modules that can be independently developed, implemented, and tested.
+
+ ##### Drivers: 
+ ###### The primary drivers that will be emphasized in this iteration are:
+ -Primary Use Cases:
+     - UC-1: Student Query & System Answer
+     - UC-2: Lecturer Announcement to Students
+     - UC-3: Lecturer Views Course Analytics Summary
+ -Quality Attributes:
+     - QA-1: Performance 
+     - QA-2: Security 
+     - QA-4: Maintainability
+     - QA-5: Availability 
+
+## STEP 3 [Choose One or More Elements of the System to Refine]
 
