@@ -70,12 +70,14 @@ Include in this file the 7 steps for Iteration 2
  ###### The goal of this iteration is to identify concrete structures that support the AIDAP's primary functionality and act as units of implementation for development teams. This moves the architecture from a more generalized structure to distinct modules that can be independently developed, implemented, and tested.
 
  ##### Drivers: 
+ 
  ###### The primary drivers that will be emphasized in this iteration are:
- -Primary Use Cases:
+ 
+ - Primary Use Cases:
      - UC-1: Student Query & System Answer
      - UC-2: Lecturer Announcement to Students
      - UC-3: Lecturer Views Course Analytics Summary
- -Quality Attributes:
+ - Quality Attributes:
      - QA-1: Performance 
      - QA-2: Security 
      - QA-4: Maintainability
