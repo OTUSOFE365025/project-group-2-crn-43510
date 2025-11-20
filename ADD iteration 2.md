@@ -32,6 +32,21 @@ In Iteration 2 we will build upon the results of Iteration 1 (the overall struct
 
 ## 1.3 Concerns
 
+| ID   | Concern |
+|----  |---------|
+|CRN-1|**AI model management:** Different models or versions may affect accuracy and latency, so version control and configuration are key|
+|CRN-2|**Integration stability:** External systems like LMS or calendars may go down, requiring retry and recovery mechanisms|
+|CRN-3|**Role-based access:** Students, lecturers, and administrators have different permissions, so RBAC must be enforced|
+|CRN-4|**Context handling:** The assistant must blend live and stored data for accurate, contextual answers|
+|CRN-5|**Data privacy:** Conversations and user data should be securely stored and anonymized when possible| 
+|CRN-6|**Scalability:** Large scalability causes monetary and operational expenses especially during peak academic season|
+|CRN-7|**Monitoring and observability:** Logging latency, accuracy, and usage metrics is essential for maintainers|
+|CRN-8|**Error recovery and fault tolerance:** The system must handle runtime failures (e.g., API timeouts, service crashes) without losing critical user data or context.|
+|CRN-9|**Energy and resource efficiency:** The system should manage AI processes and overall resource usage efficiently to reduce cloud costs and maintain performance during peak activity.|
+
+---
+
+## 1.4 Constraints
 
 The primary use cases that will be emphasized in this iteration are: 
 - UC-1: Student Query & System Answer
