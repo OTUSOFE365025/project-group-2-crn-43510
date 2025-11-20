@@ -1,9 +1,10 @@
 Include in this file the 7 steps for Iteration 2
 
-Iteration 2 focuses on more detailed decisions that drive implementation, moving from generic to specific.
-In Iteration 2 we will build upon the results of Iteration 1 (the overall structure).
+
 
 # STEP 1 [Review Inputs]
+
+#### Iteration 2 focuses on making more detailed architectural decisions that drive implementation, moving from generic to specific. In Iteration 2 we will build upon the results of Iteration 1. In Iteration 1, the overall architecture structure was established and the primary drivers were identified (use cases, quality attributes, concerns, and constraints). Throughout the second iteration, the results of the first iteration will be further refined and modeled to support implementation. 
 
 ## 1.1 Primary Functional Drivers [Use Cases]
 
@@ -47,6 +48,21 @@ In Iteration 2 we will build upon the results of Iteration 1 (the overall struct
 ---
 
 ## 1.4 Constraints
+
+| ID | Constraint |
+|----|------------|
+|CON-1|The system will be deployed as a cloud-native service to support scaling and uptime|
+|CON-2|Integrations must rely on standard REST or GraphQL APIs for interoperability|
+|CON-3|User authentication will use the university’s single sign-on (SSO)|
+|CON-4|The assistant must support both text and voice interaction|
+|CON-5|Privacy and security compliance is mandatory under institutional policy|
+|CON-6|System uptime should be 99.5% or higher with proper fail-over|
+|CON-7|Average response time should stay under 2 seconds in normal load conditions|
+|CON-8|The platform should support around 5,000 concurrent users|
+|CON-9|The system must support multi-language queries and responses|
+|CON-10|The system must be accessible and available on mobile, web, and voice-assistant devices|
+
+ ---
 
 The primary use cases that will be emphasized in this iteration are: 
 - UC-1: Student Query & System Answer
