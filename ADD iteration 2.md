@@ -3,9 +3,9 @@ Include in this file the 7 steps for Iteration 2
 Iteration 2 focuses on more detailed decisions that drive implementation, moving from generic to specific.
 In Iteration 2 we will build upon the results of Iteration 1 (the overall structure).
 
-#STEP 1 [Review Inputs]
+# STEP 1 [Review Inputs]
 
-##1.1 Primary Functional Drivers [Use Cases]
+## 1.1 Primary Functional Drivers [Use Cases]
 
 |Use Case|Description|Associated Requirement ID|
 |--------|-----------|-------------------------|
@@ -18,7 +18,7 @@ In Iteration 2 we will build upon the results of Iteration 1 (the overall struct
 
 ---
 
-##1.2 Quality Attributes
+## 1.2 Quality Attributes
 
 |ID|Quality Attribute|Scenario|Associated Use Case|
 |--|-----------------|--------|-------------------|
@@ -30,7 +30,7 @@ In Iteration 2 we will build upon the results of Iteration 1 (the overall struct
 
 ---
 
-##1.3 Concerns
+## 1.3 Concerns
 
 
 The primary use cases that will be emphasized in this iteration are: 
