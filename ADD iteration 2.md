@@ -66,12 +66,10 @@ Include in this file the 7 steps for Iteration 2
 
  ## STEP 2 [Establish Iteration Goal by Selecting Drivers]
 
- ##### Goal: 
- ###### The goal of this iteration is to identify concrete structures that support the AIDAP's primary functionality and act as units of implementation for development teams. This moves the architecture from a more generalized structure to distinct modules that can be independently developed, implemented, and tested.
+Goal: The goal of this iteration is to identify concrete structures that support the AIDAP's primary functionality and act as units of implementation for development teams. This moves the architecture from a more generalized structure to distinct modules that can be independently developed, implemented, and tested.
 
- ##### Drivers: 
- 
- ###### The primary drivers that will be emphasized in this iteration are:
+ Drivers: 
+ The primary drivers that will be emphasized in this iteration are:
  
  - Primary Use Cases:
      - UC-1: Student Query & System Answer
@@ -84,4 +82,39 @@ Include in this file the 7 steps for Iteration 2
      - QA-5: Availability 
 
 ## STEP 3 [Choose One or More Elements of the System to Refine]
+
+In Iteration 1, the architecture of the AIDAP was defined at a high level. The architecture consisted of six (6) parts:
+- Presentation Layer
+- API Gateway / Entry point
+- Core Application Services
+- Integration Layer
+- Data Management Layer
+- External Systems
+These parts provided a general overview of the system's structure but did not outline definite modules that will implement the system's primary functionality.
+
+For Iteration 2, the elements from iteration 1 that will be refined are:
+- Core Applcation Services
+- Data Management Layer
+
+These elements were chosen because they are directly affected by the primary functional drivers (UC-1, UC-2, UC-3), and the key quality attributes (QA-1, QA-2, QA-4, QA-5). These use cases rely on backend logic, AI interaction, analytical services, and data storage. Refining these elements of Iteration 1 provides architectural clarity and reduces implementation risks.
+
+The Core Application Services layer will be refined into the following modules:
+- Conversation Manager
+- NLU Service
+- Context Management
+- AI Gateway
+- Announcement Manager
+- Analytics Processor
+
+The Data Management layer will be refined into the following modules:
+- Chat Log Repository
+- User Respository
+- Course & Schedule Cache
+- Analytics Repository
+- System Metrics DB
+
+
+
+
+
 
