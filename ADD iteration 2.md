@@ -127,6 +127,13 @@ The Data Management layer will be refined into the following modules:
 
 ## STEP 6 [Sketch Views and Record Design Decisions]
 
+**Use Case Sequence Diagrams**
+** *UC-1:  Student Query & System Answer* **
+
+
+
+
+
 
 
 
