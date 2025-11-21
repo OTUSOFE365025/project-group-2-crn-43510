@@ -152,6 +152,16 @@ The Data Management layer will be refined into the following modules:
 | AI Gateway | generateResponse(queryContext, intent) | Generates a NL draft response to user's NL query |
 | Chat Log Repository | saveMessage(conversationId, userId, queryText, draftAnswer) | Logs user's query, system's draft answer, user's ID, and the conversation ID |
 
+*UC-2: Lecturer Announcement to Students*
+
+| Element | Method Name | Description |
+|---------|-------------|-------------|
+| Web UI | postAnnoucement(userTok, courseId, content) | Sends the Lecturer's announcment content, course ID and session token to the backend |
+| API Gateway | createAnnouncment(userContext, courseId, content) | Creates the announcment with course ID, content, and Lecturer ID and sends it to be to be validated |
+| Announcment Manager | getEnrolledStudents(courseID), getCCourseDetails(courseID) | requests sent to the user repository and course and schedule cache to generate list of students and valid course details that are then to be sent off to the notfication adapter|
+| Notification Adapter | sendAnnouncement(studentList, courseInfo, content) | sends the Lecturer's announcement to the students |
+| Chat Log Repository | logAnnouncement(courseId, content, deliveryStatus) | Logs Lecturer's announcemnt content, the corresponding course ID and the delivery status of the annonucment |
+
 
 
 
