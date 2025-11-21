@@ -240,6 +240,85 @@ These instantiated architectural elements refine the high-level structure from I
 | Notification Adapter | sendAnnouncement(studentList, courseInfo, content) | sends the Lecturer's announcement to the students |
 | Chat Log Repository | logAnnouncement(courseId, content, deliveryStatus) | Logs Lecturer's announcemnt content, the corresponding course ID and the delivery status of the annonucment |
 
+## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities and Define Interfaces]
+
+## STEP 6 [Sketch Views and Record Design Decisions]
+
+**Use Case Sequence Diagrams**
+
+*UC-1:  Student Query & System Answer*
+<img width="2228" height="1010" alt="UC1 drawio" src="https://github.com/user-attachments/assets/50386b94-23f9-44de-8115-08429e195890" />
+
+*UC-2: Lecturer Announcement to Students*
+<img width="2230" height="906" alt="UC2 drawio" src="https://github.com/user-attachments/assets/7717b168-559b-4c97-86bc-b925fb324a00" />
+
+*UC-3: Lecturer Views Course Analytics Summary*
+<img width="2070" height="884" alt="UC3 drawio" src="https://github.com/user-attachments/assets/12bb0fda-bb46-4642-9c2c-4be8257fc541" />
+
+**Use Case Sequence Diagram Descriptions**
+
+*UC-1:  Student Query & System Answer*
+
+| Element | Method Name | Description |
+|---------|-------------|-------------|
+| Web UI | sendQuery(userTok, queryText) | Sends the user entered NL query and session token to the backend |
+| API Gateway | handleQuery(userContext, queryText) | Coordinates query interpretation, AI response generation, chat logging, then returns answer |
+| NLU Service | interpret(queryText, userContext) | sends the user's NL query to be interpreted |
+| Context Manager | generateContext(userId, intent) | Creates a conversation context object |
+| Course and Schedule Cache | getCourseAndSchedule(userId) | Returns user's courses and scheduless |
+| AI Gateway | generateResponse(queryContext, intent) | Generates a NL draft response to user's NL query |
+| Chat Log Repository | saveMessage(conversationId, userId, queryText, draftAnswer) | Logs user's query, system's draft answer, user's ID, and the conversation ID |
+
+*UC-2: Lecturer Announcement to Students*
+
+| Element | Method Name | Description |
+|---------|-------------|-------------|
+| Web UI | postAnnoucement(userTok, courseId, content) | Sends the Lecturer's announcment content, course ID and session token to the backend |
+| API Gateway | createAnnouncment(userContext, courseId, content) | Creates the announcment with course ID, content, and Lecturer ID and sends it to be to be validated |
+| Announcment Manager | getEnrolledStudents(courseID), getCCourseDetails(courseID) | requests sent to the user repository and course and schedule cache to generate list of students and valid course details that are then to be sent off to the notfication adapter|
+| Notification Adapter | sendAnnouncement(studentList, courseInfo, content) | sends the Lecturer's announcement to the students |
+| Chat Log Repository | logAnnouncement(courseId, content, deliveryStatus) | Logs Lecturer's announcemnt content, the corresponding course ID and the delivery status of the annonucment |
+
+*UC-3: Lecturer Views Course Analytics Summary*
+
+| Element | Method Name | Description |
+|---------|-------------|-------------|
+| Lectuerer UI | sendQuery(userTok, queryText) | Sends the user entered NL query and session token to the backend |
+| API Gateway | handleQuery(userContext, queryText) | Coordinates query interpretation, AI response generation, chat logging, then returns answer |
+| Analytics Processor | interpret(queryText, userContext) | sends the user's NL query to be interpreted |
+| Analytics Repository | generateContext(userId, intent) | Creates a conversation context object |
+| Course and Schedule Cache | getCourseAndSchedule(userId) | Returns user's courses and scheduless |
+| AI Gateway | generateResponse(queryContext, intent) | Generates a NL draft response to user's NL query |
+| System Metrics DB | saveMessage(conversationId, userId, queryText, draftAnswer) | Logs user's query, system's draft answer, user's ID, and the conversation ID |
+
+**Deployment Diagram**
+
+<img width="1619" height="1171" alt="deployment drawio" src="https://github.com/user-attachments/assets/f72c5c09-f872-40ab-86a3-e33b86ec4b36" />
+
+**Deployment Diagram Description**
+
+| Element | Description |
+|---------|-------------|
+| Student Device | Student's mobile or web UI used to interact with the AIDAP; sends queries to the API gateway |
+| Lecturer Device | Lecturer's mobile or web UI used to interact with the AIDAP; sends queries to API gateway |
+| Admin Device | Admin's mobile or web UI used to interact with the AIDAP; sends queries to API gateway |
+| API Gateway Server | Acts as a single entry point and performs user token validation, directs requests, and performs RBAC checks |
+| Conversation Manager | Organizes UC-1 query handling by coordinating with NLU Services, Context Management, and the AI Gateway |
+| NLU Service | Interprets the user's NL query into intent |
+| Context Management | Determines the context of the Student or Lecturer's query needed for AI response generation |
+| AI Gateway | Facade of the AI model that handles response formatting |
+| Announcement Manager | Processes the Lecturer/Admin's announcements and sends the announcement notification via external email services |
+| Analytics Processor | Retrieves course analytics for Lecturers |
+| Chat Log Repository | Database that stores conversation history |
+| User Repository | Stores users' information, system profiles, and any linked accounts |
+| Course & Schedule Cache | Stores all courses and their corresponding schedule times and dates |
+| Analytics Repository | Stores course analytics for faster retrieval |
+| System Metrics DB | Records system performance, errors, and monitors status |
+| LMS | External learning management system used for course data |
+| Registration System | External system used for course enrollment |
+| Academic Calendar | External calendar used for the university's important dates and scheduling |
+| Email Server | Used to send notifications to students and Lecturers |
+
 
 
 
