@@ -125,6 +125,17 @@ The Data Management layer will be refined into the following modules:
 
 ## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities and Define Interfaces]
 
+## 5.1 Presentation Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **Web Client** | Provides the main user interface for Students, Lecturers, and Administrators; formats user input and sends structured requests to the API Gateway. |
+| **Mobile Client** | Offers mobile access to system features; communicates with the API Gateway for all backend operations. |
+| **Voice/Assistant Interface** | Supports voice-based commands and passes them to backend services (as required by system constraints) through the API Gateway. |
+
+---
+
 ## STEP 6 [Sketch Views and Record Design Decisions]
 
 **Use Case Sequence Diagrams**
