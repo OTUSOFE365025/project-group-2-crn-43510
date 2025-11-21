@@ -129,7 +129,17 @@ The Data Management layer will be refined into the following modules:
 
 **Use Case Sequence Diagrams**
 
-** *UC-1:  Student Query & System Answer* **
+*UC-1:  Student Query & System Answer*
+<img width="2228" height="1010" alt="UC1 drawio" src="https://github.com/user-attachments/assets/50386b94-23f9-44de-8115-08429e195890" />
+
+*UC-2: Lecturer Announcement to Students*
+<img width="2230" height="906" alt="UC2 drawio" src="https://github.com/user-attachments/assets/7717b168-559b-4c97-86bc-b925fb324a00" />
+
+*UC-3: Lecturer Views Course Analytics Summary*
+
+
+
+
 
 
 
