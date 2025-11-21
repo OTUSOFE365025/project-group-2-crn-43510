@@ -319,6 +319,9 @@ These instantiated architectural elements refine the high-level structure from I
 | Academic Calendar | External calendar used for the university's important dates and scheduling |
 | Email Server | Used to send notifications to students and Lecturers |
 
+## STEP & [Analysis]
+
+
 
 
 
