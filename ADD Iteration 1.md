@@ -277,12 +277,12 @@ High-level sequence diagrams were created to check that the architecture support
 Validates that a student query flows through:
 API Gateway → Application Server → Data Storage → External Systems → back to the student.  
 This confirms support for retrieving stored context and live academic data.
-![UC-1 Sequence Diagram](image.png)
+![UC-1 Sequence Diagram](diagrams\image.png)
 ### UC-2: Lecturer Announcement
 Shows the lecturer submitting an announcement, the system verifying permissions through SSO, and the Application Server sending the message to the Notification Service.  
 Confirms that write operations and permission checks occur at the correct layers.
 
-![UC-2 Sequence Diagram](image-1.png)
+![UC-2 Sequence Diagram](diagrams\image-1.png)
 
 ## 6.3 Deployment View
 
@@ -295,7 +295,9 @@ The diagram includes:
 - **Application Servers:** Two backend servers running the core application services.
 - **Data Storage:** User profiles, conversation history, analytics data, and system logs.
 - **External University Systems:** SSO, LMS, Registration, Calendar, and Notification services.
-![Deployment View](image-3.png)
+
+![Deployment View](diagrams\image-3.png)
+
 This view confirms that the system can scale horizontally, integrate with university systems, and support the performance and availability requirements defined in Step 1.
 
 
