@@ -123,8 +123,7 @@ The Data Management layer will be refined into the following modules:
 | Use the **Facade Pattern** for the AI Gateway | The Facade Pattern hides the complexities of the AI models. It allows for a simplified interface for the Conversation Manager and also allows for the AI models to be updated without affecting the entire system *(QA-5)*. |
 | Use the **Adapter pattern** for external systems integration | External services, such as LMS, Registration, Calendar, and email systems, use different incompatible APIs and data formats (XML, JSON). The Adapter pattern will enable these services to work together without altering their source code, thereby improving the availability and maintainability *(QA-4, QA-5)* of the system. |
 
-## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities,
-and Define Interfaces]
+## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities and Define Interfaces]
 
 
 
