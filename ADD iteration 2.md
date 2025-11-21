@@ -139,9 +139,18 @@ The Data Management layer will be refined into the following modules:
 <img width="2070" height="884" alt="UC3 drawio" src="https://github.com/user-attachments/assets/12bb0fda-bb46-4642-9c2c-4be8257fc541" />
 
 **Use Case Sequence Diagram Descriptions**
+
 *UC-1:  Student Query & System Answer*
 
-
+| Element | Method Name | Description |
+|---------|-------------|-------------|
+| Web UI | sendQuery(userTok, queryText) | Sends the user entered NL query and session token to the backend |
+| API Gateway | handleQuery(userContext, queryText) | Coordinates query interpretation, AI response generation, chat logging, then returns answer |
+| NLU Service | interpret(queryText, userContext) | sends the user's NL query to be interpreted |
+| Context Manager | generateContext(userId, intent) | Creates a conversation context object |
+| Course and Schedule Cache | getCourseAndSchedule(userId) | Returns user's courses and scheduless |
+| AI Gateway | generateResponse(queryContext, intent) | Generates a NL draft response to user's NL query |
+| Chat Log Repository | saveMessage(conversationId, userId, queryText, draftAnswer) | Logs user's query, system's draft answer, user's ID, and the conversation ID |
 
 
 
