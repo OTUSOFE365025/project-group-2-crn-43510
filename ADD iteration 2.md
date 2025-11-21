@@ -240,45 +240,6 @@ These instantiated architectural elements refine the high-level structure from I
 | Notification Adapter | sendAnnouncement(studentList, courseInfo, content) | sends the Lecturer's announcement to the students |
 | Chat Log Repository | logAnnouncement(courseId, content, deliveryStatus) | Logs Lecturer's announcemnt content, the corresponding course ID and the delivery status of the annonucment |
 
-## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities and Define Interfaces]
-
-## STEP 6 [Sketch Views and Record Design Decisions]
-
-**Use Case Sequence Diagrams**
-
-*UC-1:  Student Query & System Answer*
-<img width="2228" height="1010" alt="UC1 drawio" src="https://github.com/user-attachments/assets/50386b94-23f9-44de-8115-08429e195890" />
-
-*UC-2: Lecturer Announcement to Students*
-<img width="2230" height="906" alt="UC2 drawio" src="https://github.com/user-attachments/assets/7717b168-559b-4c97-86bc-b925fb324a00" />
-
-*UC-3: Lecturer Views Course Analytics Summary*
-<img width="2070" height="884" alt="UC3 drawio" src="https://github.com/user-attachments/assets/12bb0fda-bb46-4642-9c2c-4be8257fc541" />
-
-**Use Case Sequence Diagram Descriptions**
-
-*UC-1:  Student Query & System Answer*
-
-| Element | Method Name | Description |
-|---------|-------------|-------------|
-| Web UI | sendQuery(userTok, queryText) | Sends the user entered NL query and session token to the backend |
-| API Gateway | handleQuery(userContext, queryText) | Coordinates query interpretation, AI response generation, chat logging, then returns answer |
-| NLU Service | interpret(queryText, userContext) | sends the user's NL query to be interpreted |
-| Context Manager | generateContext(userId, intent) | Creates a conversation context object |
-| Course and Schedule Cache | getCourseAndSchedule(userId) | Returns user's courses and scheduless |
-| AI Gateway | generateResponse(queryContext, intent) | Generates a NL draft response to user's NL query |
-| Chat Log Repository | saveMessage(conversationId, userId, queryText, draftAnswer) | Logs user's query, system's draft answer, user's ID, and the conversation ID |
-
-*UC-2: Lecturer Announcement to Students*
-
-| Element | Method Name | Description |
-|---------|-------------|-------------|
-| Web UI | postAnnoucement(userTok, courseId, content) | Sends the Lecturer's announcment content, course ID and session token to the backend |
-| API Gateway | createAnnouncment(userContext, courseId, content) | Creates the announcment with course ID, content, and Lecturer ID and sends it to be to be validated |
-| Announcment Manager | getEnrolledStudents(courseID), getCCourseDetails(courseID) | requests sent to the user repository and course and schedule cache to generate list of students and valid course details that are then to be sent off to the notfication adapter|
-| Notification Adapter | sendAnnouncement(studentList, courseInfo, content) | sends the Lecturer's announcement to the students |
-| Chat Log Repository | logAnnouncement(courseId, content, deliveryStatus) | Logs Lecturer's announcemnt content, the corresponding course ID and the delivery status of the annonucment |
-
 *UC-3: Lecturer Views Course Analytics Summary*
 
 | Element | Method Name | Description |
