@@ -159,6 +159,50 @@ The Data Management layer will be refined into the following modules:
 | **Engagement Monitoring Service** | Detects low engagement patterns and triggers alerts to lecturers. |
 | **NLU Service** | Performs natural language understanding: intent detection, entity extraction, and classification. Supports multi-language queries. |
 
+## 5.4 Integration Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **LMS Adapter** | Communicates with the LMS to retrieve course content and analytics inputs. |
+| **Registration Adapter** | Fetches enrollment information for courses and users. |
+| **Calendar Adapter** | Syncs course events and reminders to student calendars. |
+| **Email/Notification Adapter** | Sends emails or notifications through campus messaging systems. |
+
+### Interfaces
+- REST/GraphQL calls to LMS  
+- REST/GraphQL calls to Registration  
+- REST/GraphQL calls to Calendar  
+- Email/Notification API calls 
+
+## 5.5 Data Management Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **User Profile Store** | Stores user preferences, language settings, and notification configurations. |
+| **Conversation History Store** | Saves past queries and responses for personalization. |
+| **Course & Schedule Cache** | Caches frequently accessed LMS and schedule information to improve performance. |
+| **Analytics Data Store** | Stores processed analytics and engagement metrics. |
+| **System Logs & Metrics Store** | Captures logs and performance data for monitoring. |
+
+
+## 5.6 External Systems (Boundary)
+
+### External Dependencies
+| External System | Purpose |
+|-----------------|---------|
+| **University SSO** | Authenticates users before they access the system and returns identity information to the API Gateway. |
+| **LMS System** | Supplies course materials and analytics data. |
+| **Registration System** | Provides enrollment data and academic information. |
+| **Calendar System** | Provides academic dates and schedule events. |
+| **Email/Notification System** | Delivers announcements and alerts. |
+
+
+## 5.7 Summary
+
+These instantiated architectural elements refine the high-level structure from Iteration 1 by introducing more detailed modules for the Core Application Services and Data Management Layer. Responsibilities are now split across more specific components to better support performance, maintainability, and security.
+
 ## STEP 6 [Sketch Views and Record Design Decisions]
 
 **Use Case Sequence Diagrams**
