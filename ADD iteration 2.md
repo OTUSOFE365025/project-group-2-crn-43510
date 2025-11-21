@@ -145,6 +145,19 @@ The Data Management layer will be refined into the following modules:
 | **Rate Limiter** | Controls high traffic loads and prevents service overload during peak times. |
 | **SSO Authentication Handler** | Validates user login using the university’s single sign-on provider. |
 
+## 5.3 Core Application Services Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **Query Processing Service** | Interprets user queries, coordinates with AI Model Service and Context Manager, and returns structured responses. |
+| **AI Model Service** | Serves as the unified interface for interacting with AI models. Manages versioning, configuration, and model selection. |
+| **Conversation Manager** | Coordinates the full flow of a user query. Sends text to the NLU Service, retrieves context, passes results to the AI Gateway, and formats the final response.|
+| **Context Manager** | Retrieves and updates conversation history and user preferences. |
+| **Announcement Manager** | Handles announcement creation and distribution for Lecturers and Administrators). Interacts with Notification/Email systems and validates lecturer permissions, posts announcements, and triggers notifications. |
+| **Analytics Service** | Collects and summarizes course analytics through integration adapters. Performs asynchronous data processing for performance. |
+| **Engagement Monitoring Service** | Detects low engagement patterns and triggers alerts to lecturers. |
+| **NLU Service** | Performs natural language understanding: intent detection, entity extraction, and classification. Supports multi-language queries. |
 
 ## STEP 6 [Sketch Views and Record Design Decisions]
 
