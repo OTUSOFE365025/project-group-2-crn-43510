@@ -138,6 +138,11 @@ The Data Management layer will be refined into the following modules:
 *UC-3: Lecturer Views Course Analytics Summary*
 <img width="2070" height="884" alt="UC3 drawio" src="https://github.com/user-attachments/assets/12bb0fda-bb46-4642-9c2c-4be8257fc541" />
 
+**Use Case Sequence Diagram Descriptions**
+*UC-1:  Student Query & System Answer*
+
+
+
 
 
 
