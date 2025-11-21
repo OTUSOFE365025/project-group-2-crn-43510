@@ -98,7 +98,7 @@ For Iteration 2, the elements from iteration 1 that will be refined are:
 
 These elements were chosen because they are directly affected by the primary functional drivers (UC-1, UC-2, UC-3), and the key quality attributes (QA-1, QA-2, QA-4, QA-5). These use cases rely on backend logic, AI interaction, analytical services, and data storage. Refining these elements of Iteration 1 provides architectural clarity and reduces implementation risks.
 
-The Core Application Services layer will be refined into the following modules:
+The Core Application Services will be refined into the following modules:
 - Conversation Manager
 - NLU Service
 - Context Management
@@ -114,6 +114,17 @@ The Data Management layer will be refined into the following modules:
 - System Metrics DB
 
 ## STEP 4 [Choose One or More Design Concepts That Satisfy the Selected Drivers]
+
+| Design Location and Location | Rationale and Assumption |
+|------------------------------|--------------------------|
+| Use a **Layered Architecture** for the Core Application Services and Data Management elements | A layered architecture allows for encapsulation, independent development of modules, and adequate maintainability *(QA-4)*. This architectural pattern also supports the security *(QA-2)* of the system by isolating access to vulnerable data within the Data Management Layer. |
+| Use the **Broker Pattern** for the Core Application Services | All three primary use case drivers *(UC-1, UC-2, UC-3)* requires the collaboration between multiple backend services (NLU, AI Gateway, Data Logging, Analytics). The Broker architecture will reduce coupling between services, improve modifiability, and support horizontal scailing *(QA-1 & QA-5)*. |
+| Use the **Repository pattern** for Data Management | This pattern provides a clear separation between the client/business logic and the data source/access. This separation facilitates easier maintenance *(QA-4)*, as changes can be made without disturbing the services, allowing the repository to be updated without interruption. This will also improve consistency within the Data Management Layer as all services will utilize the same query logic, which reduces duplication and allows for easier system testing *(QA-4 & QA-5)*. |
+| Use the **Facade Pattern** for the AI Gateway | The Facade Pattern hides the complexities of the AI models. It allows for a simplified interface for the Conversation Manager and also allows for the AI models to be updated without affecting the entire system *(QA-5)*. |
+| Use the **Adapter pattern** for external systems integration | External services, such as LMS, Registration, Calendar, and email systems, use different incompatible APIs and data formats (XML, JSON). The Adapter pattern will enable these services to work together without altering their source code, thereby improving the availability and maintainability *(QA-4, QA-5)* of the system. |
+
+## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities,
+and Define Interfaces]
 
 
 
