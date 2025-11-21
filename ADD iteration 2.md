@@ -125,5 +125,9 @@ The Data Management layer will be refined into the following modules:
 
 ## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities and Define Interfaces]
 
+## STEP 6 [Sketch Views and Record Design Decisions]
+
+
+
 
 
