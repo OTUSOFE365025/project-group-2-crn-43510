@@ -136,6 +136,8 @@ The Data Management layer will be refined into the following modules:
 <img width="2230" height="906" alt="UC2 drawio" src="https://github.com/user-attachments/assets/7717b168-559b-4c97-86bc-b925fb324a00" />
 
 *UC-3: Lecturer Views Course Analytics Summary*
+<img width="2070" height="884" alt="UC3 drawio" src="https://github.com/user-attachments/assets/12bb0fda-bb46-4642-9c2c-4be8257fc541" />
+
 
 
 
