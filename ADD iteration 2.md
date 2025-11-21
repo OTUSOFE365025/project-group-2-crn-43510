@@ -93,7 +93,7 @@ In Iteration 1, the architecture of the AIDAP was defined at a high level. The a
 These parts provided a general overview of the system's structure but did not outline definite modules that will implement the system's primary functionality.
 
 For Iteration 2, the elements from iteration 1 that will be refined are:
-- Core Applcation Services
+- Core Application Services
 - Data Management Layer
 
 These elements were chosen because they are directly affected by the primary functional drivers (UC-1, UC-2, UC-3), and the key quality attributes (QA-1, QA-2, QA-4, QA-5). These use cases rely on backend logic, AI interaction, analytical services, and data storage. Refining these elements of Iteration 1 provides architectural clarity and reduces implementation risks.
