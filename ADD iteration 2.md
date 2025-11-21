@@ -134,7 +134,17 @@ The Data Management layer will be refined into the following modules:
 | **Mobile Client** | Offers mobile access to system features; communicates with the API Gateway for all backend operations. |
 | **Voice/Assistant Interface** | Supports voice-based commands and passes them to backend services (as required by system constraints) through the API Gateway. |
 
----
+## 5.2 API Gateway / Entry Point
+
+### Component and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **API Gateway** | Handles SSO authentication, validates requests, applies role-based access control, and routes calls to backend services. |
+| **RBAC Validator** | Applies role-based access control for Students, Lecturers, and Administrators. |
+| **Request Router** | Directs incoming requests to the correct backend modules (Conversation Manager, Announcement Manager, Analytics Processor). |
+| **Rate Limiter** | Controls high traffic loads and prevents service overload during peak times. |
+| **SSO Authentication Handler** | Validates user login using the university’s single sign-on provider. |
+
 
 ## STEP 6 [Sketch Views and Record Design Decisions]
 
