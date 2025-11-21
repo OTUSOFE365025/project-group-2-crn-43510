@@ -325,35 +325,35 @@ These instantiated architectural elements refine the high-level structure from I
 
 | Driver | Not Addressed | Partially Addressed | Completely Addressed | Design Decisions Made During This Iteration |
 |--------|----------------|----------------------|------------------------|---------------------------------------------|
-| **UC-1 Student Query & System Answer** |  |  | + | Core Application Services refined (Conversation Manager, NLU Service, Context Management, AI Gateway, Chat Logging). Preliminary interfaces identified to support end-to-end query handling. |
+| **UC-1 Student Query & System Answer** |  |  | + | Core Application Services refined (Conversation Manager, NLU Service, Context Management, AI Gateway, Chat Logging). |
 | **UC-2 Lecturer Announcement to Students** |  |  | + | Announcement Manager module introduced and responsibilities identified. Security and authorization steps refined through Core Services. |
 | **UC-3 Lecturer Views Course Analytics Summary** |  |  | + | Analytics Processor module refined. Data flows and preliminary interfaces established for analytics retrieval. |
 | **UC-4 Administrator Broadcasts Campus Announcement** | + |  |  | Not included in this iteration. |
-| **UC-5 Low Engagement Detection → Lecturer Notification** | + |  |  | Not included; requires analytics event processing and Integration Layer refinement. |
-| **UC-6 Administrator Recovers Data for Users** | + |  |  | Not part of this iteration; relates to system recovery, backups, and deployment infrastructure. |
+| **UC-5 Low Engagement Detection → Lecturer Notification** | + |  |  | Not included in this iteration. |
+| **UC-6 Administrator Recovers Data for Users** | + |  |  | Not included in this iteration. |
 | **QA-1 Performance** |  |  | + | Performance supported through caching, stateless Core Services, separation of analytics vs operational data, and Broker architecture. |
 | **QA-2 Security** |  |  | + | Role-based authorization responsibilities identified in Announcement Manager and Analytics Processor. Secure Data Layer access reinforced. |
-| **QA-3 Usability** | + |  |  | Not addressed. |
+| **QA-3 Usability** | + |  |  | Not included in this iteration. |
 | **QA-4 Maintainability** |  |  | + | Maintainability supported via Layered Architecture, Repository Pattern, Broker pattern, and clear module separation. |
 | **QA-5 Availability** |  |  | + | Availability improved by caching, fault-tolerant service decomposition, and Adapter pattern for external systems. |
-| **Concern CRN-1 AI Model Management** | + |  |  | Not addressed. |
+| **Concern CRN-1 AI Model Management** | + |  |  | Not included in this iteration. |
 | **Concern CRN-2 Integration Stability** |  | + |  | Adapter pattern selected, but Integration Layer not yet refined. |
 | **Concern CRN-3 Role-Based Access** |  |  | + | Authorization flows identified across services (Announcement Manager, Analytics Processor, Data Layer restrictions). |
 | **Concern CRN-4 Error Recovery / Fault Tolerance** |  | + |  | Some availability tactics introduced; deeper fault recovery postponed to next iteration. |
-| **Concern CRN-5 Data Privacy** | + |  |  | Sensitive data-handling rules will be refined in a later iteration with Presentation/API layers. |
+| **Concern CRN-5 Data Privacy** | + |  |  | Not included in this iteration. |
 | **Concern CRN-6 Scalability** |  | + |  | Broker architecture + stateless modules selected, but deployment scaling comes in later iteration. |
-| **Concern CRN-7 Monitoring & Observability** | + |  |  | Not addressed. |
+| **Concern CRN-7 Monitoring & Observability** | + |  |  | Not included in this iteration.|
 | **Concern CRN-8 Error Recovery and Fault Tolerance** |  | + |  | Repository pattern and caching support partial fault tolerance; full recovery in later iteration. |
-| **Constraint CON-1 Cloud-Native Deployment** | + |  |  | Deployment layer refinement comes next iteration. |
+| **Constraint CON-1 Cloud-Native Deployment** | + |  |  | Not included in this iteration. |
 | **Constraint CON-2 Standard REST/GraphQL Integrations** |  | + |  | Adapter pattern chosen; detailed interfaces deferred. |
-| **Constraint CON-3 SSO Authentication** |  | + |  | API Gateway validation assumed; backend authorization refined but Gateway is not expanded this iteration. |
-| **Constraint CON-4 Support for Text & Voice** | + |  |  | UI and Presentation Layer are out of scope this iteration. |
-| **Constraint CON-5 Privacy/Security Compliance** |  | + |  | Data Layer access restrictions and service-level authorization identified; full compliance requires further UI considerations. |
-| **Constraint CON-6 99.5% Uptime** |  | + |  | Availability tactics selected but deployment-level redundancy deferred. |
+| **Constraint CON-3 SSO Authentication** |  | + |  | Gateway is not expanded in this iteration. |
+| **Constraint CON-4 Support for Text & Voice** | + |  |  | Not included in this iteration.|
+| **Constraint CON-5 Privacy/Security Compliance** |  | + |  | Data Layer access restrictions and service-level authorization identified. |
+| **Constraint CON-6 99.5% Uptime** |  | + |  | Availability tactics selected. |
 | **Constraint CON-7 ≤2 Second Response Time** |  | + |  | Performance-related tactics (caching, separation of analytics) introduced. |
-| **Constraint CON-8 5000 Concurrent Users** |  | + |  | Scalability partially addressed through stateless services; deployment refinement needed. |
-| **Constraint CON-9 Multi-Language Support** | + |  |  | Depends on the NLU model and Presentation Layer, not refined this iteration. |
-| **Constraint CON-10 Multi-Device Access (Web/Mobile/Voice)** | + |  |  | Presentation Layer refinement required in a later iteration. |
+| **Constraint CON-8 5000 Concurrent Users** |  | + |  | Scalability partially addressed through stateless services. |
+| **Constraint CON-9 Multi-Language Support** | + |  |  |Not included in this iteration. |
+| **Constraint CON-10 Multi-Device Access (Web/Mobile/Voice)** | + |  |  | Not included in this iteration. |
 
 
 
