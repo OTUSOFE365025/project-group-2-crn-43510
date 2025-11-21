@@ -113,8 +113,7 @@ The Data Management layer will be refined into the following modules:
 - Analytics Repository
 - System Metrics DB
 
-
-
+## STEP 4 [Choose One or More Design Concepts That Satisfy the Selected Drivers]
 
 
 
