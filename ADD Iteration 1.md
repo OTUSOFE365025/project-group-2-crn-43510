@@ -85,7 +85,7 @@ The system is decomposed into the following parts:
 
 The purpose of this step is to select design concepts that will guide how the high-level components identified in Step 3 should be structured. These concepts need to support the main use cases (UC-1 to UC-6), system constraints, and the quality attributes prioritized in Step 1.
 
-# Presentation Layer
+# 4.1 Presentation Layer
 
 Design Concepts:
 
@@ -98,7 +98,7 @@ Optional support for voice-enabled devices as required by system constraints.
 Reason:
 This supports multi-platform access, usability, and keeps complex logic on the server side for better performance and maintainability.
 
-# API Gateway / Entry Point
+# 4.2 API Gateway / Entry Point
 
 Design Concepts:
 
@@ -111,7 +111,7 @@ Routing, access control, and basic request validation.
 Reason:
 This aligns with the SSO requirement, improves security, and simplifies how different clients communicate with backend services.
 
-# Core Application Services
+# 4.3Core Application Services
 
 Design Concepts:
 
@@ -124,7 +124,7 @@ Support for asynchronous operations when necessary (e.g., analytics).
 Reason:
 This helps with performance, availability, and maintainability, and it maps directly to the main system use cases.
 
-# Integration Layer
+# 4.4 Integration Layer
 
 Design Concepts:
 
@@ -137,7 +137,7 @@ Retry and timeout logic for external service faults.
 Reason:
 This ensures compatibility with required REST/GraphQL data sources and increases reliability when external systems fail or lag.
 
-# Data Management Layer
+# 4.5 Data Management Layer
 
 Design Concepts:
 
@@ -150,7 +150,7 @@ Caching for frequently accessed academic and schedule information.
 Reason:
 This supports persistence requirements, improves performance, and keeps data concerns cleanly separated.
 
-# External Systems (Boundary)
+# 4.6 External Systems (Boundary)
 
 Design Concepts:
 
@@ -162,6 +162,143 @@ Loose coupling via adapters rather than direct internal integration.
 
 Reason:
 This defines system boundaries, reduces coupling, and makes the architecture more adaptable to changes in external university systems.
+
 ## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities, and Define Interfaces]
+
+Based on the decomposition from Step 3 and the design concepts selected in Step 4, the following high-level architectural elements are instantiated for Iteration 1. Each component is assigned its main responsibilities and the general interfaces it exposes. These elements form the foundation of the AIDAP architecture and will be refined further in Iteration 2.
+
+---
+
+## 5.1 Presentation Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **Web Client** | Provides the main user interface for Students, Lecturers, and Administrators; sends requests to the API Gateway. |
+| **Mobile Client** | Offers mobile access to system features; communicates with the API Gateway. |
+| **Voice/Assistant Interface** | Supports voice-based commands and passes them to backend services (as required by system constraints). |
+
+---
+
+## 5.2 API Gateway / Entry Point
+
+### Component and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **API Gateway** | Handles SSO authentication, validates requests, applies role-based access control, and routes calls to backend services. |
+
+---
+
+## 5.3 Core Application Services Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **Query Processing Service** | Interprets user queries, coordinates with AI Model Service and Context Manager, and returns structured responses. |
+| **AI Model Service** | Sends natural language input to an AI/LLM model and returns intent/meaning. |
+| **Context Manager** | Retrieves and updates conversation history and user preferences. |
+| **Announcement Service** | Validates lecturer permissions, posts announcements, and triggers notifications. |
+| **Analytics Service** | Collects and summarizes course analytics through integration adapters. |
+| **Engagement Monitoring Service** | Detects low engagement patterns and triggers alerts to lecturers. |
+
+---
+
+## 5.4 Integration Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **LMS Adapter** | Communicates with the LMS to retrieve course content and analytics inputs. |
+| **Registration Adapter** | Fetches enrollment information for courses and users. |
+| **Calendar Adapter** | Retrieves academic calendar events and deadlines. |
+| **Email/Notification Adapter** | Sends emails or notifications through campus messaging systems. |
+
+### Interfaces
+- REST/GraphQL calls to LMS  
+- REST/GraphQL calls to Registration  
+- REST/GraphQL calls to Calendar  
+- Email/Notification API calls  
+
+---
+
+## 5.5 Data Management Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **User Profile Store** | Stores user preferences, language settings, and notification configurations. |
+| **Conversation History Store** | Saves past queries and responses for personalization. |
+| **Analytics Data Store** | Stores processed analytics and engagement metrics. |
+| **System Logs & Metrics Store** | Captures logs and performance data for monitoring. |
+
+---
+
+## 5.6 External Systems (Boundary)
+
+### External Dependencies
+| External System | Purpose |
+|-----------------|---------|
+| **University SSO** | Authenticates users before they access the system. |
+| **LMS System** | Supplies course materials and analytics data. |
+| **Registration System** | Provides enrollment data. |
+| **Calendar System** | Provides academic dates and schedule events. |
+| **Email/Notification System** | Delivers announcements and alerts. |
+
+---
+
+## 5.7 Summary
+
+These instantiated architectural elements reflect the major components needed to support the key use cases and constraints identified earlier. Responsibilities are separated to improve performance, maintainability, and security. More detailed domain-specific components and interfaces will be defined in Iteration 2.
+
 ## STEP 6 [Sketch Views and Record Design Decisions]
+
+## 6.1 Logical Architecture View
+
+The logical view summarizes the high-level structure of AIDAP based on the layers defined earlier.
+
+- **Presentation Layer:** Web client, mobile client, voice interface  
+- **API Gateway:** SSO authentication, routing, RBAC  
+- **Core Application Services:** Query processing, AI model service, context manager, analytics, announcement service, engagement monitoring  
+- **Integration Layer:** LMS Adapter, Registration Adapter, Calendar Adapter, Email/Notification Adapter  
+- **Data Management Layer:** User profiles, conversation history, analytics data, system logs  
+- **External Systems:** University SSO, LMS, Registration, Calendar, Notification services  
+
+![Architecture View](image-2.png)
+
+The logical diagram created for this iteration confirms that responsibilities are separated across layers and that each component aligns with the architectural drivers from Step 1.
+
+---
+
+## 6.2 Sequence Diagrams
+
+High-level sequence diagrams were created to check that the architecture supports the main interactions of the system.
+
+### UC-1: Student Query & System Answer
+Validates that a student query flows through:
+API Gateway → Application Server → Data Storage → External Systems → back to the student.  
+This confirms support for retrieving stored context and live academic data.
+![UC-1 Sequence Diagram](image.png)
+### UC-2: Lecturer Announcement
+Shows the lecturer submitting an announcement, the system verifying permissions through SSO, and the Application Server sending the message to the Notification Service.  
+Confirms that write operations and permission checks occur at the correct layers.
+
+![UC-2 Sequence Diagram](image-1.png)
+
+## 6.3 Deployment View
+
+The deployment view shows how the major parts of AIDAP run in the cloud environment.  
+The diagram includes:
+
+- **Client Devices:** Web browser, mobile app, and voice device.
+- **Load Balancer:** Routes incoming requests to the API Gateway.
+- **API Gateway:** Central entry point for routing and access control.
+- **Application Servers:** Two backend servers running the core application services.
+- **Data Storage:** User profiles, conversation history, analytics data, and system logs.
+- **External University Systems:** SSO, LMS, Registration, Calendar, and Notification services.
+![Deployment View](image-3.png)
+This view confirms that the system can scale horizontally, integrate with university systems, and support the performance and availability requirements defined in Step 1.
+
+
+
+
 ## STEP 7 [Perform Analysis of the Current Design and Review Iteration Goal]
