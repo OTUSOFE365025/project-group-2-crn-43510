@@ -103,8 +103,42 @@ The Integration layer will be refined into the following modules:
 
 | Design Location and Location | Rationale and Assumption |
 |------------------------------|--------------------------|
-| Use a **Layered Architecture** for the Core Application Services and Data Management elements | A layered architecture allows for encapsulation, independent development of modules, and adequate maintainability *(QA-4)*. This architectural pattern also supports the security *(QA-2)* of the system by isolating access to vulnerable data within the Data Management Layer. |
-| Use the **Broker Pattern** for the Core Application Services | All three primary use case drivers *(UC-1, UC-2, UC-3)* requires the collaboration between multiple backend services (NLU, AI Gateway, Data Logging, Analytics). The Broker architecture will reduce coupling between services, improve modifiability, and support horizontal scailing *(QA-1 & QA-5)*. |
-| Use the **Repository pattern** for Data Management | This pattern provides a clear separation between the client/business logic and the data source/access. This separation facilitates easier maintenance *(QA-4)*, as changes can be made without disturbing the services, allowing the repository to be updated without interruption. This will also improve consistency within the Data Management Layer as all services will utilize the same query logic, which reduces duplication and allows for easier system testing *(QA-4 & QA-5)*. |
-| Use the **Facade Pattern** for the AI Gateway | The Facade Pattern hides the complexities of the AI models. It allows for a simplified interface for the Conversation Manager and also allows for the AI models to be updated without affecting the entire system *(QA-5)*. |
-| Use the **Adapter pattern** for external systems integration | External services, such as LMS, Registration, Calendar, and email systems, use different incompatible APIs and data formats (XML, JSON). The Adapter pattern will enable these services to work together without altering their source code, thereby improving the availability and maintainability *(QA-4, QA-5)* of the system. |
+| Observer Pattern | When a low-engagement event triggers, subscribed components (Notification Builder, Announcement Manager) react accordingly. |
+| Scheduler / Background Workers | Engagement analysis must run periodically without user initiation. This supports performance (QA-1) and availability (QA-5). |
+| Event-Driven Architecture | UC-5 requires asynchronous triggers (e.g., "low engagement detected") without blocking API requests. |
+| Repository Pattern | Extension	Supports new data stores for engagement metrics and activity logs. |
+| Pipes-and-Filters Pattern | Engagement monitoring pipeline can clean, transform, and calculate metrics from raw logs. It improves maintainability (QA-4). |
+
+## STEP 5 [Instantiate Architectural Elements, Allocate Responsibilities and Define Interfaces]
+
+## 5.1 Core Application Services Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **Notification Builder** | Creates structured low-engagement alert messages based on templates and passes them to Notification Adapter. |
+| **Analytics Processor** | Collects and summarizes course analytics through integration adapters. Performs asynchronous data processing for performance. Generates engagement scores and stores them in the Engagement Metrics Store. |
+| **Engagement Monitoring Service** | Periodically retrieves student activity logs, runs engagement calculations, identifies low-activity users, and triggers alerts to lectures. |
+| **NLU Service** | Performs natural language understanding: intent detection, entity extraction, and classification. Supports multi-language queries. Interprets lecturer queries related to engagement insights (e.g., “Which students are falling behind?”). |
+
+## 5.2 Integration Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **LMS Adapter** | Communicates with the LMS to retrieve course content and analytics inputs. Fetches raw participation and activity statistics for each student. |
+| **Email/Notification Adapter** | Sends low-engagement alerts via email or notification channels and supports templated messages. |
+
+## 5.3 Data Management Layer
+
+### Components and Responsibilities
+| Component | Responsibilities |
+|----------|------------------|
+| **Engagement Metrics Store** | Stores computed engagement scores per student, per course. |
+| **Analytics Data Store** | Stores processed analytics and engagement metrics. Includes engagement summary endpoints for lecturers. |
+| **Student Activity Log Store** | Stores participation logs, attendance, submission timestamps, and LMS activity. |
+
+
+## 5.4 Summary
+
+These instantiated architectural elements refine the Core Services and Data Management layers to support low-engagement detection and lecturer notifications. The added components define how engagement analysis and alert workflows operate. These updates complete the architectural support needed for UC-5.
