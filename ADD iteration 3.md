@@ -149,6 +149,8 @@ These instantiated architectural elements refine the Core Services and Data Mana
 
 *UC-5: Low Engagement Detection & Lecturer Notification*
 
+<img width="2150" height="793" alt="Untitled Diagram drawio (1)" src="https://github.com/user-attachments/assets/b839eb93-3e99-44f0-be0c-3e9f8f5bea82" />
+
 **Use Case Sequence Diagram Description**
 
 *UC-5: Low Engagement Detection & Lecturer Notification*
@@ -204,6 +206,10 @@ These instantiated architectural elements refine the Core Services and Data Mana
 ## ATAM Utility Tree
 
 <img width="3244" height="4004" alt="image" src="https://github.com/user-attachments/assets/46d1599b-c064-4b31-bf2a-f2d9e6b14ee8" />
+
+## ATAM Risk Assessment
+
+
 
 
 
