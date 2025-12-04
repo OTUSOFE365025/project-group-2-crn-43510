@@ -145,7 +145,8 @@ These instantiated architectural elements refine the Core Services and Data Mana
 
 ## STEP 6 [Sketch Views and Record Design Decisions]
 
-**Use Case Sequence Diagrams**
+**Use Case Sequence Diagram**
+
 *UC-5: Low Engagement Detection & Lecturer Notification*
 
 **Use Case Sequence Diagram Description**
@@ -154,10 +155,48 @@ These instantiated architectural elements refine the Core Services and Data Mana
 
 | Element | Method Name | Description |
 |---------|-------------|-------------|
-| Web UI | sendQuery(userTok, queryText) | Sends the user entered NL query and session token to the backend |
-| API Gateway | handleQuery(userContext, queryText) | Coordinates query interpretation, AI response generation, chat logging, then returns answer |
-| NLU Service | interpret(queryText, userContext) | sends the user's NL query to be interpreted |
-| Context Manager | generateContext(userId, intent) | Creates a conversation context object |
-| Course and Schedule Cache | getCourseAndSchedule(userId) | Returns user's courses and scheduless |
-| AI Gateway | generateResponse(queryContext, intent) | Generates a NL draft response to user's NL query |
-| Chat Log Repository | saveMessage(conversationId, userId, queryText, draftAnswer) | Logs user's query, system's draft answer, user's ID, and the conversation ID |
+| Engagement Monitoring Service |	runEngagementScan(courseId) |	Initiates periodic engagement analysis for a course. |
+| LMS Adapter |	fetchActivityLogs(courseId)	| Retrieves raw logs including sign-ins, submissions, forum interactions. |
+| Student Activity Log Store	| saveRawLogs(courseId, logs)	Stores raw logs for later reuse. |
+| Analytics Processor	| calculateEngagementScores(courseId)	Generates engagement levels for each student. |
+| Engagement Metrics Store	| storeEngagementScores(courseId, scoreList)	Saves computed scores. |
+| Engagement Monitoring Service	| detectLowEngagement(courseId)	Identifies students under threshold. |
+| Notification Builder |	buildAlertMessage(studentList, courseInfo)	Creates alert templates for each affected student. |
+| Notification Adapter |	sendLowEngagementAlert(studentId, template)	Sends notification via email or SMS to the lecturer. |
+| Lecturer UI |	displayAlert(alertInfo)	Lecturer receives the notification. |
+
+## STEP 7 [Analysis]
+
+## Iteration 3 – Progress Table
+
+| Driver | Not Addressed | Partially Addressed | Completely Addressed | Design Decisions Made During This Iteration |
+|--------|----------------|----------------------|------------------------|---------------------------------------------|
+| **UC-1 Student Query & System Answer** |  |  | + | Core Application Services refined (Conversation Manager, NLU Service, Context Management, AI Gateway, Chat Logging). |
+| **UC-2 Lecturer Announcement to Students** |  |  | + | Announcement Manager module introduced and responsibilities identified. Security and authorization steps refined through Core Services. |
+| **UC-3 Lecturer Views Course Analytics Summary** |  |  | + | Analytics Processor module refined. Data flows and preliminary interfaces established for analytics retrieval. |
+| **UC-4 Administrator Broadcasts Campus Announcement** | + |  |  | Not included in this iteration. |
+| **UC-5 Low Engagement Detection → Lecturer Notification** |  |  | + | Full low-engagement monitoring and notification workflow implemented. |
+| **UC-6 Administrator Recovers Data for Users** | + |  |  | Not included in this iteration. |
+| **QA-1 Performance** |  |  | + | Performance supported through caching, stateless Core Services, separation of analytics vs operational data, and Broker architecture. |
+| **QA-2 Security** |  |  | + | Role-based authorization responsibilities identified in Announcement Manager and Analytics Processor. Secure Data Layer access reinforced. |
+| **QA-3 Usability** | + |  |  | Not included in this iteration. |
+| **QA-4 Maintainability** |  |  | + | Maintainability supported via Layered Architecture, Repository Pattern, Broker pattern, and clear module separation. |
+| **QA-5 Availability** |  |  | + | Availability improved by caching, fault-tolerant service decomposition, and Adapter pattern for external systems. |
+| **Concern CRN-1 AI Model Management** | + |  |  | Not included in this iteration. |
+| **Concern CRN-2 Integration Stability** |  | + |  | Adapter pattern selected, but Integration Layer not yet refined. |
+| **Concern CRN-3 Role-Based Access** |  |  | + | Authorization flows identified across services (Announcement Manager, Analytics Processor, Data Layer restrictions). |
+| **Concern CRN-4 Error Recovery / Fault Tolerance** |  | + |  | Some availability tactics introduced; deeper fault recovery postponed to next iteration. |
+| **Concern CRN-5 Data Privacy** | + |  |  | Not included in this iteration. |
+| **Concern CRN-6 Scalability** |  | + |  | Worker scaling, broker architecture + stateless modules selected, but deployment scaling comes in later iteration. |
+| **Concern CRN-7 Monitoring & Observability** |  |  | + | New metrics store and observability hooks.|
+| **Concern CRN-8 Error Recovery and Fault Tolerance** |  | + |  | Repository pattern and caching support partial fault tolerance and basic retry logic in monitoring; full recovery in later iteration. |
+| **Constraint CON-1 Cloud-Native Deployment** | + |  |  | Not included in this iteration. |
+| **Constraint CON-2 Standard REST/GraphQL Integrations** |  | + |  | Adapter pattern chosen; detailed interfaces deferred. |
+| **Constraint CON-3 SSO Authentication** |  | + |  | Gateway is not expanded in this iteration. |
+| **Constraint CON-4 Support for Text & Voice** | + |  |  | Not included in this iteration.|
+| **Constraint CON-5 Privacy/Security Compliance** |  | + |  | Data Layer access restrictions and service-level authorization identified. |
+| **Constraint CON-6 99.5% Uptime** |  | + |  | Availability tactics selected. |
+| **Constraint CON-7 ≤2 Second Response Time** |  | + |  | Performance-related tactics (caching, separation of analytics) introduced. |
+| **Constraint CON-8 5000 Concurrent Users** |  | + |  | Scalability partially addressed through stateless services. |
+| **Constraint CON-9 Multi-Language Support** | + |  |  |Not included in this iteration. |
+| **Constraint CON-10 Multi-Device Access (Web/Mobile/Voice)** | + |  |  | Not included in this iteration. |
