@@ -142,3 +142,22 @@ The Integration layer will be refined into the following modules:
 ## 5.4 Summary
 
 These instantiated architectural elements refine the Core Services and Data Management layers to support low-engagement detection and lecturer notifications. The added components define how engagement analysis and alert workflows operate. These updates complete the architectural support needed for UC-5.
+
+## STEP 6 [Sketch Views and Record Design Decisions]
+
+**Use Case Sequence Diagrams**
+*UC-5: Low Engagement Detection & Lecturer Notification*
+
+**Use Case Sequence Diagram Description**
+
+*UC-5: Low Engagement Detection & Lecturer Notification*
+
+| Element | Method Name | Description |
+|---------|-------------|-------------|
+| Web UI | sendQuery(userTok, queryText) | Sends the user entered NL query and session token to the backend |
+| API Gateway | handleQuery(userContext, queryText) | Coordinates query interpretation, AI response generation, chat logging, then returns answer |
+| NLU Service | interpret(queryText, userContext) | sends the user's NL query to be interpreted |
+| Context Manager | generateContext(userId, intent) | Creates a conversation context object |
+| Course and Schedule Cache | getCourseAndSchedule(userId) | Returns user's courses and scheduless |
+| AI Gateway | generateResponse(queryContext, intent) | Generates a NL draft response to user's NL query |
+| Chat Log Repository | saveMessage(conversationId, userId, queryText, draftAnswer) | Logs user's query, system's draft answer, user's ID, and the conversation ID |
