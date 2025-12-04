@@ -203,6 +203,7 @@ These instantiated architectural elements refine the Core Services and Data Mana
 
 ## ATAM Utility Tree
 
-<img width="629" height="815" alt="image" src="https://github.com/user-attachments/assets/6f09d291-5d96-42bc-9cc3-117d12ac499c" />
+<img width="3244" height="4004" alt="image" src="https://github.com/user-attachments/assets/46d1599b-c064-4b31-bf2a-f2d9e6b14ee8" />
+
 
 
