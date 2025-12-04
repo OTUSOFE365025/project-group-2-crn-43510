@@ -209,6 +209,14 @@ These instantiated architectural elements refine the Core Services and Data Mana
 
 ## ATAM Risk Assessment
 
+| **ID** | **Related Scenario(s)** | **Sensitivity Point** | **Risk Description** | **Tradeoff / Notes** |
+| ------ | ----------------------- | ----------------------| ---------------------| ---------------------|
+| **R1** | Performance | Frequency and cost of engagement scans; efficiency of Analytics Processor | If scans run too often or are too heavy, they may slow down online queries, violating the 2-second response time target. | Less frequent scans improve performance but will delay detection; more frequent scans keep system updated but negatively impacts performance of system. |
+| **R2** | Availability | Redundancy and failover of Engagement Monitoring Service and workers | If there is only one worker instance or weak health checks, low-engagement detection may silently fail.| Adding redundancy increases availability but raises deployment and operational cost. |
+| **R3** | Maintainability | Coupling between Monitoring Service, Analytics Processor, and data stores | If engagement rules are scattered across components, updating them becomes slow and error-prone. | Centralizing rules improves modifiability but may overly concentrate logic in one component. |
+| **R4** | Security | RBAC implementation and data-access rules | Misconfigured permissions could expose engagement data to the wrong user (lecturers or students). | Stricter access controls improve security but could lead to accidental lock-outs of the valid user. |
+| **R5** | Usability | Quality and clarity of alert templates | Poorly designed notifications may confuse lecturers | More detail within notifications improves clarity but risks clutter; simpler alerts improve UX but could omit important context. |
+| **R6** | Both performance and availability | Scheduling and prioritization of background jobs vs. online traffic | If background jobs are not stopped, they may compete with API traffic and degrade uptime/performance. | Stopping will protect performance but delay engagement detection and notifications. |
 
 
 
