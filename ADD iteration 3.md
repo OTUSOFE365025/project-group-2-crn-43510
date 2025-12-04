@@ -200,3 +200,8 @@ These instantiated architectural elements refine the Core Services and Data Mana
 | **Constraint CON-8 5000 Concurrent Users** |  | + |  | Scalability partially addressed through stateless services. |
 | **Constraint CON-9 Multi-Language Support** | + |  |  |Not included in this iteration. |
 | **Constraint CON-10 Multi-Device Access (Web/Mobile/Voice)** | + |  |  | Not included in this iteration. |
+
+## ATAM Utility Tree
+
+<img width="3244" height="4004" alt="image" src="https://github.com/user-attachments/assets/49c91a1c-0b14-4df2-85a5-14a85be371cb" />
+
