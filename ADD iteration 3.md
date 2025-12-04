@@ -159,13 +159,13 @@ These instantiated architectural elements refine the Core Services and Data Mana
 |---------|-------------|-------------|
 | Engagement Monitoring Service |	runEngagementScan(courseId) |	Initiates periodic engagement analysis for a course. |
 | LMS Adapter |	fetchActivityLogs(courseId)	| Retrieves raw logs including sign-ins, submissions, forum interactions. |
-| Student Activity Log Store	| saveRawLogs(courseId, logs)	Stores raw logs for later reuse. |
-| Analytics Processor	| calculateEngagementScores(courseId)	Generates engagement levels for each student. |
-| Engagement Metrics Store	| storeEngagementScores(courseId, scoreList)	Saves computed scores. |
-| Engagement Monitoring Service	| detectLowEngagement(courseId)	Identifies students under threshold. |
-| Notification Builder |	buildAlertMessage(studentList, courseInfo)	Creates alert templates for each affected student. |
-| Notification Adapter |	sendLowEngagementAlert(studentId, template)	Sends notification via email or SMS to the lecturer. |
-| Lecturer UI |	displayAlert(alertInfo)	Lecturer receives the notification. |
+| Student Activity Log Store	| saveRawLogs(courseId, logs) |	Stores raw logs for later reuse. |
+| Analytics Processor	| calculateEngagementScores(courseId)	| Generates engagement levels for each student. |
+| Engagement Metrics Store	| storeEngagementScores(courseId, scoreList)	| Saves computed scores. |
+| Engagement Monitoring Service	| detectLowEngagement(courseId)	| Identifies students under threshold. |
+| Notification Builder |	buildAlertMessage(studentList, courseInfo)	| Creates alert templates for each affected student. |
+| Notification Adapter |	sendLowEngagementAlert(studentId, template)	| Sends notification via email or SMS to the lecturer. |
+| Lecturer UI |	displayAlert(alertInfo)	| Lecturer receives the notification. |
 
 ## STEP 7 [Analysis]
 
@@ -211,12 +211,12 @@ These instantiated architectural elements refine the Core Services and Data Mana
 
 | **ID** | **Related Scenario(s)** | **Sensitivity Point** | **Risk Description** | **Tradeoff / Notes** |
 | ------ | ----------------------- | ----------------------| ---------------------| ---------------------|
-| **R1** | Performance | Frequency and cost of engagement scans; efficiency of Analytics Processor | If scans run too often or are too heavy, they may slow down online queries, violating the 2-second response time target. | Less frequent scans improve performance but will delay detection; more frequent scans keep system updated but negatively impacts performance of system. |
-| **R2** | Availability | Redundancy and failover of Engagement Monitoring Service and workers | If there is only one worker instance or weak health checks, low-engagement detection may silently fail.| Adding redundancy increases availability but raises deployment and operational cost. |
-| **R3** | Maintainability | Coupling between Monitoring Service, Analytics Processor, and data stores | If engagement rules are scattered across components, updating them becomes slow and error-prone. | Centralizing rules improves modifiability but may overly concentrate logic in one component. |
-| **R4** | Security | RBAC implementation and data-access rules | Misconfigured permissions could expose engagement data to the wrong user (lecturers or students). | Stricter access controls improve security but could lead to accidental lock-outs of the valid user. |
-| **R5** | Usability | Quality and clarity of alert templates | Poorly designed notifications may confuse lecturers | More detail within notifications improves clarity but risks clutter; simpler alerts improve UX but could omit important context. |
-| **R6** | Both performance and availability | Scheduling and prioritization of background jobs vs. online traffic | If background jobs are not stopped, they may compete with API traffic and degrade uptime/performance. | Stopping will protect performance but delay engagement detection and notifications. |
+| **R1** | QA-1Performance | Frequency and cost of engagement scans; efficiency of Analytics Processor | If scans run too often or are too heavy, they may slow down online queries, violating the 2-second response time target. | Less frequent scans improve performance but will delay detection; more frequent scans keep system updated but negatively impacts performance of system. |
+| **R2** | QA-5 Availability | Redundancy and health of Engagement Monitoring Service and workers | If there is only one worker instance or insufficient health checks, the system may stop detecting low-engagement.| Adding redundancy increases availability but raises deployment and operational cost. |
+| **R3** | QA-4 Maintainability | Coupling between Monitoring Service, Analytics Processor, and data stores | If engagement rules are scattered across components, updating them becomes slow and error-prone. | Centralizing rules improves modifiability but may overly concentrate logic in one component. |
+| **R4** | QA-2 Security | RBAC implementation and data-access rules | Misconfigured permissions could expose engagement data to the wrong user (lecturers or students). | Stricter access controls improve security but could lead to accidental lock-outs of the valid user. |
+| **R5** | QA-3 Usability | Quality and clarity of alert templates | Poorly designed notifications may confuse lecturers | More detail within notifications improves clarity but risks clutter; simpler alerts improve UX but could omit important context. |
+| **R6** | QA-1 Performance & QA-5 Availability | Scheduling and prioritization of background jobs vs. online traffic | If background jobs are not stopped, they may compete with API traffic and degrade uptime/performance. | Stopping will protect performance but delay engagement detection and notifications. |
 
 
 
