@@ -74,3 +74,37 @@ Goal: The goal of this iteration is to introduce architectural refinements that 
      - QA-1: Performance 
      - QA-4: Maintainability
      - QA-5: Availability
+
+## STEP 3 [Choose One or More Elements of the System to Refine]
+
+For Iteration 3, the elements from iterations 1 and 2 that will be refined are:
+- Core Application Services
+- Data Management Layer
+- Integration Layer
+
+These elements were chosen because they are directly affected by the primary functional driver (UC-5), and the key quality attributes (QA-1, QA-4, QA-5). This use case relies on trend analysis, automated background jobs, accurate data retrieval and notification delivery. Refining these elements of Iteration 2 provides architectural clarity and reduces implementation risks.
+
+The Core Application Services will be refined into the following modules:
+- NLU Service
+- Engagement Monitoring Service
+- Notification Builder
+- Analytics Processor
+
+The Data Management layer will be refined into the following modules:
+- Engagement Metrics Store
+- Student Activity Log Store
+- Update to Analytics Repository to store engagement scores
+
+The Integration layer will be refined into the following modules:
+- Notification Adapter
+- LMS Adapter
+
+## STEP 4 [Choose One or More Design Concepts That Satisfy the Selected Drivers]
+
+| Design Location and Location | Rationale and Assumption |
+|------------------------------|--------------------------|
+| Use a **Layered Architecture** for the Core Application Services and Data Management elements | A layered architecture allows for encapsulation, independent development of modules, and adequate maintainability *(QA-4)*. This architectural pattern also supports the security *(QA-2)* of the system by isolating access to vulnerable data within the Data Management Layer. |
+| Use the **Broker Pattern** for the Core Application Services | All three primary use case drivers *(UC-1, UC-2, UC-3)* requires the collaboration between multiple backend services (NLU, AI Gateway, Data Logging, Analytics). The Broker architecture will reduce coupling between services, improve modifiability, and support horizontal scailing *(QA-1 & QA-5)*. |
+| Use the **Repository pattern** for Data Management | This pattern provides a clear separation between the client/business logic and the data source/access. This separation facilitates easier maintenance *(QA-4)*, as changes can be made without disturbing the services, allowing the repository to be updated without interruption. This will also improve consistency within the Data Management Layer as all services will utilize the same query logic, which reduces duplication and allows for easier system testing *(QA-4 & QA-5)*. |
+| Use the **Facade Pattern** for the AI Gateway | The Facade Pattern hides the complexities of the AI models. It allows for a simplified interface for the Conversation Manager and also allows for the AI models to be updated without affecting the entire system *(QA-5)*. |
+| Use the **Adapter pattern** for external systems integration | External services, such as LMS, Registration, Calendar, and email systems, use different incompatible APIs and data formats (XML, JSON). The Adapter pattern will enable these services to work together without altering their source code, thereby improving the availability and maintainability *(QA-4, QA-5)* of the system. |
