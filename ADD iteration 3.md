@@ -60,3 +60,17 @@
 |CON-10|The system must be accessible and available on mobile, web, and voice-assistant devices|
 
  ---
+
+ ## STEP 2 [Establish Iteration Goal by Selecting Drivers]
+
+Goal: The goal of this iteration is to introduce architectural refinements that support event-driven engagement monitoring, trend analysis, and automated lecturer notifications for UC-5. This iteration focuses on creating background processing components, establishing new data flows for engagement trends, and defining end-to-end interactions for the low-engagement workflow.
+
+ Drivers: 
+ The primary drivers that will be emphasized in this iteration are:
+ 
+ - Primary Use Cases:
+     - UC-5: Lecturer Informs Students of Low Engagement
+ - Quality Attributes:
+     - QA-1: Performance 
+     - QA-4: Maintainability
+     - QA-5: Availability
